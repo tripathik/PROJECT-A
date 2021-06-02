@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TransportManagementSystem.Models.Route>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/RLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <button type="button" class="btn btn-success" onclick="location.href = '@Url.Action("Create","Routes")'">Add Routes</button>
+</p>
+<table class="table">
+    <thead style="background-color:burlywood;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stop1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stop2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stop3)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stop1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stop2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stop3)
+            </td>
+            <td>
+                <button type="button" class="btn btn-success" onclick="location.href = '@Url.Action("Details","Routes", new { id=item.RouteNumber})'"><i class="fa fa-eye"></i></button>
+                <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit","Routes", new { id=item.RouteNumber})'"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-danger" onclick="location.href = '@Url.Action("Delete","Routes", new { id=item.RouteNumber})'"><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("Index","Home")'">Back</button>

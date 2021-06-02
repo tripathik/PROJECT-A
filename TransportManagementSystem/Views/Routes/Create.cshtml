@@ -1,0 +1,46 @@
+﻿@model TransportManagementSystem.Models.Route
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/RLayout.cshtml";
+}
+
+
+
+<h4>Route</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RouteName" class="control-label"></label>
+                <input asp-for="RouteName" class="form-control" />
+                <span asp-validation-for="RouteName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stop1" class="control-label"></label>
+                <input asp-for="Stop1" class="form-control" />
+                <span asp-validation-for="Stop1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stop2" class="control-label"></label>
+                <input asp-for="Stop2" class="form-control" />
+                <span asp-validation-for="Stop2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stop3" class="control-label"></label>
+                <input asp-for="Stop3" class="form-control" />
+                <span asp-validation-for="Stop3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("Index","Routes")'">Back</button>
+</div>
+

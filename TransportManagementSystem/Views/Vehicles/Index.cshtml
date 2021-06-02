@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TransportManagementSystem.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/VLayout.cshtml";
+}
+
+<h3>Vehicle List</h3>
+
+<p>
+    <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Create","Vehicles")'">Add Vehicles</button>
+</p>
+<table class="table">
+    <thead style="background-color:burlywood;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsOperable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsAC)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsOperable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAC)
+            </td>
+            <td>
+                <button type="button" class="btn btn-success" onclick="location.href = '@Url.Action("Details","Vehicles", new { id=item.VehicleNumber})'"><i class="fa fa-eye"></i></button>
+                <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit","Vehicles", new { id=item.VehicleNumber})'"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-danger" onclick="location.href = '@Url.Action("Delete","Vehicles", new { id=item.VehicleNumber})'"><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("Index","Home")'">Back</button>

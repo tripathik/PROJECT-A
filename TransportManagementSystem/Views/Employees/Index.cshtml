@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TransportManagementSystem.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/ELayout.cshtml";
+}
+
+<h3>Allocated Vehicles List</h3>
+
+<p>
+    <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Create","Employees")'">Allocate</button>
+</p>
+<table class="table">
+    <thead style="background-color:burlywood;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Routes)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicles.VehicleNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicles.VehicleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Routes.RouteName)
+            </td>
+            <td>
+                <button type="button" class="btn btn-success" onclick="location.href = '@Url.Action("Details","Employees",new {id=item.EmployeeId })'"><i class="fa fa-eye"></i></button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("Index","Home")'">Back</button>
